@@ -1,47 +1,33 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import {ref,computed} from "vue";
+const contador1 = ref(0)
+const contador2= ref(0)
+const soma = computed(() => contador1.value + contador2.value) 
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+<div>
+  Contador 1: {{ contador1 }}
+  <button @click="contador1++">+</button>
+  <button @click="contador1--">-</button>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+</div>
 
-  <main>
-    <TheWelcome />
-  </main>
+<div>
+  Contador 2: {{ contador2 }}
+  <button @click="contador2++">+</button>
+  <button @click="contador2--">-</button>
+</div>
+<div>
+  Soma= {{ soma }}
+</div>
+<div v-if="soma > 10" class="verde">È maior que 10</div>
+<div v-else="soma < 10" class="vermelho">é menor que 10</div>
+<div ></div>
+
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
